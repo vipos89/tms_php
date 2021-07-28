@@ -1,6 +1,47 @@
 <?php
-
+$a = 10;
+echo $a."<br>";
+include_once 'functions.php';
+include_once 'functions2.php';
 session_start();
+
+echo $a."<br>";
+
+
+
+die();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 $url = $_SERVER['REQUEST_URI'];
 $url = explode('?', $url);
@@ -11,9 +52,7 @@ $admin = [
 ];
 echo $_SERVER['REQUEST_METHOD'];
 
-echo "<pre>";
-print_r($_SERVER);
-echo "</pre>";
+
 
 
 switch ($url) {
