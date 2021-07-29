@@ -1,46 +1,7 @@
 <?php
-$a = 10;
-echo $a."<br>";
-include_once 'functions.php';
-include_once 'functions2.php';
 session_start();
 
-echo $a."<br>";
-
-
-
-die();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+include_once __DIR__.'/core/db.php';
 
 
 $url = $_SERVER['REQUEST_URI'];

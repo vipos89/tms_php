@@ -1,3 +1,10 @@
+<?php
+$sql = "SELECT * FROM products";
+$res = mysqli_query($connection, $sql);
+$products = mysqli_fetch_all($res, MYSQLI_ASSOC);
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,15 +14,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shop Homepage - List of articles</title>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
-    <link href="/assets/css/styles_php.css" rel="stylesheet" />
+    <link href="/assets/css/styles_php.css" rel="stylesheet"/>
 </head>
 
 <body>
 
-<?php include_once __DIR__."/../partials/main_menu.php"?>
-<?php include_once __DIR__."/../partials/header.php"?>
+<?php include_once __DIR__ . "/../partials/main_menu.php" ?>
+<?php include_once __DIR__ . "/../partials/header.php" ?>
 <div class="container">
-    <h1> Страница каталога</h1>
+    <?php foreach ($products as $product): ?>
+        <div>
+            <h2><?= $product['name'] ?></h2>
+            <img src="<?= $product['image'] ?>" alt="">
+            <p><?= $product['price'] ?></p>
+            <a href="/product?id=<?=$product['id']?>">Подробнее</a>
+        </div>
+    <?php endforeach; ?>
 </div>
 
 <section class="pagination">
@@ -25,7 +39,7 @@
     <p class="pagination-num">4</p>
     <p class="pagination-num">5</p>
 </section>
-<?php include_once __DIR__.'/../partials/footer.php' ?>
+<?php include_once __DIR__ . '/../partials/footer.php' ?>
 </body>
 
 </html>
