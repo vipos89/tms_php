@@ -160,6 +160,7 @@ a {
     box-sizing: border-box;
 }
 .product-item {
+    padding-top: 10px;
     width: 300px;
     text-align: center;
     margin: 0 auto;
@@ -209,5 +210,4 @@ a {
 .container{
     max-width: 1170px;
     margin: auto;
-    height: 1000px;
 }
