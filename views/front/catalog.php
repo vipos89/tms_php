@@ -4,7 +4,9 @@
  */
 $sql = "SELECT * FROM products";
 $res = mysqli_query($connection, $sql);
-$products = mysqli_fetch_all($res, MYSQLI_ASSOC);
+$product = mysqli_fetch_all($res, MYSQLI_ASSOC);
+//debug($products);
+
 ?>
 
 
@@ -28,87 +30,19 @@ $products = mysqli_fetch_all($res, MYSQLI_ASSOC);
     <h2>Каталог товаров</h2>
 </div>
 <div class="container">
-
+<?php foreach ($products as $product):?>
     <div class="product-item">
-        <img src="https://wwweb.uz/wp-content/uploads/2019/07/php-tutorial.jpg">
+        <?php
+        $image = !empty($product['image'])?$product['image']: 'https://lh3.googleusercontent.com/proxy/t_CzDqCfDdNUcAdiFYbmfSFZwGDo-FbNrah_14phmB1ITnPj-N6txYDbPEYOLxT9HOT8boazjyDdZdJA3_tJ_9Qimi2n4w';
+        ?>
+        <img src="<?=$image?>" alt="<?=$product['name']?>">
         <div class="product-list">
-            <h3><a href="">Название товара</a></h3>
-            <span class="price">1999</span>
+            <h3><a href="/product?id=<?=$product['id']?>"><?=$product['name']?></a></h3>
+            <span class="price"><?=$product['price']?></span>
             <span class="button">В корзину</span>
         </div>
     </div>
-    <div class="product-item">
-        <img src="https://wwweb.uz/wp-content/uploads/2019/07/php-tutorial.jpg">
-        <div class="product-list">
-            <h3><a href="">Название товара</a></h3>
-            <span class="price">1999</span>
-            <span class="button">В корзину</span>
-        </div>
-    </div>
-    <div class="product-item">
-        <img src="https://wwweb.uz/wp-content/uploads/2019/07/php-tutorial.jpg">
-        <div class="product-list">
-            <h3><a href="">Название товара</a></h3>
-            <span class="price">1999</span>
-            <span class="button">В корзину</span>
-        </div>
-    </div>
-    <div class="product-item">
-        <img src="https://wwweb.uz/wp-content/uploads/2019/07/php-tutorial.jpg">
-        <div class="product-list">
-            <h3><a href="">Название товара</a></h3>
-            <span class="price">1999</span>
-            <span class="button">В корзину</span>
-        </div>
-    </div>
-    <div class="product-item">
-        <img src="https://wwweb.uz/wp-content/uploads/2019/07/php-tutorial.jpg">
-        <div class="product-list">
-            <h3><a href="">Название товара</a></h3>
-            <span class="price">1999</span>
-            <span class="button">В корзину</span>
-        </div>
-    </div>
-    <div class="product-item">
-        <img src="https://wwweb.uz/wp-content/uploads/2019/07/php-tutorial.jpg">
-        <div class="product-list">
-            <h3><a href="">Название товара</a></h3>
-            <span class="price">1999</span>
-            <span class="button">В корзину</span>
-        </div>
-    </div>
-    <div class="product-item">
-        <img src="https://wwweb.uz/wp-content/uploads/2019/07/php-tutorial.jpg">
-        <div class="product-list">
-            <h3><a href="">Название товара</a></h3>
-            <span class="price">1999</span>
-            <span class="button">В корзину</span>
-        </div>
-    </div>
-    <div class="product-item">
-        <img src="https://wwweb.uz/wp-content/uploads/2019/07/php-tutorial.jpg">
-        <div class="product-list">
-            <h3><a href="">Название товара</a></h3>
-            <span class="price">1999</span>
-            <span class="button">В корзину</span>
-        </div>
-    </div>
-    <div class="product-item">
-        <img src="https://wwweb.uz/wp-content/uploads/2019/07/php-tutorial.jpg">
-        <div class="product-list">
-            <h3><a href="">Название товара</a></h3>
-            <span class="price">1999</span>
-            <span class="button">В корзину</span>
-        </div>
-    </div>
-    <div class="product-item">
-        <img src="https://wwweb.uz/wp-content/uploads/2019/07/php-tutorial.jpg">
-        <div class="product-list">
-            <h3><a href="">Название товара</a></h3>
-            <span class="price">1999</span>
-            <span class="button">В корзину</span>
-        </div>
-    </div>
+<?php endforeach; ?>
 
 </div>
 

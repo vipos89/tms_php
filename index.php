@@ -2,6 +2,7 @@
 session_start();
 
 include_once __DIR__.'/core/db.php';
+include_once __DIR__.'/core/functions.php';
 
 
 $url = $_SERVER['REQUEST_URI'];

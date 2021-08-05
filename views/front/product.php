@@ -1,3 +1,16 @@
+<?php
+/**
+ * @var $connection mysqli
+ */
+
+$id = (int) $_GET['id'];
+$sql = "select * from products WHERE id = $id";
+$res = mysqli_query($connection, $sql);
+$product = mysqli_fetch_assoc($res);
+$image = $product['image']?? 'https://chinaprices.ru/blog/wp-content/uploads/2015/04/1.jpg';
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,11 +28,11 @@
 <?php include_once __DIR__ . '/../partials/header.php' ?>
 
 <section class="list-product">
-    <img class="list-img-product" src="./img/steelseries Arctis-9.png" alt="css">
+    <img class="list-img-product" src="<?=$image?>" alt="css">
 
     <div class="list-product-our">
-        <h2 class="list-product-title">ARCTIS 9 WIRELESS</h2>
-        <p class="list-product-subtitle">Wireless Gaming Headset for PC</p>
+        <h2 class="list-product-title"><?=$product['name']?></h2>
+        <p class="list-product-subtitle"><?=$product['name']?></p>
         <p class="list-product-description">
             &#8226;Lossless 2.4 GHz wireless for lag-free high fidelity gaming audio on PC and PlayStation<br>
             &#8226;Simultaneous Bluetooth for calls, music, and VoIP chat while gaming<br>
@@ -27,18 +40,12 @@
             &#8226;Signature Arctis sound with ChatMix control to hear every detail for an audio advantage<br>
             &#8226;20+ hour battery life for nonstop wireless usage
         </p>
-        <p class="list-product-info-price">Price: 580 BYN</p>
+        <p class="list-product-info-price">Price: <?=$product['price']?> BYN</p>
         <button class="list-product-button">Order</button>
     </div>
 </section>
 
-<section class="pagination">
-    <p class="pagination-num">1</p>
-    <p class="pagination-num">2</p>
-    <p class="pagination-num">3</p>
-    <p class="pagination-num">4</p>
-    <p class="pagination-num">5</p>
-</section>
+
 <?php include_once __DIR__ . '/../partials/footer.php' ?>
 </body>
 
