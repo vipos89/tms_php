@@ -1,4 +1,7 @@
 <?php
+/**
+ * @var $connection mysqli
+ */
 $sql = "SELECT * FROM products";
 $res = mysqli_query($connection, $sql);
 $products = mysqli_fetch_all($res, MYSQLI_ASSOC);
@@ -22,15 +25,56 @@ $products = mysqli_fetch_all($res, MYSQLI_ASSOC);
 <?php include_once __DIR__ . "/../partials/main_menu.php" ?>
 <?php include_once __DIR__ . "/../partials/header.php" ?>
 <div class="container">
-    <?php foreach ($products as $product): ?>
-        <div>
-            <h2><?= $product['name'] ?></h2>
-            <img src="<?= $product['image'] ?>" alt="">
-            <p><?= $product['price'] ?></p>
-            <a href="/product?id=<?=$product['id']?>">Подробнее</a>
+    <div class="product-item">
+        <img src="https://html5book.ru/wp-content/uploads/2015/10/black-dress.jpg">
+        <div class="product-list">
+            <h3>Маленькое черное платье</h3>
+            <span class="price">₽ 1999</span>
+            <a href="" class="button">В корзину</a>
         </div>
-    <?php endforeach; ?>
+    </div>
+    <div class="product-item">
+        <img src="https://html5book.ru/wp-content/uploads/2015/10/black-dress.jpg">
+        <div class="product-list">
+            <h3>Маленькое черное платье</h3>
+            <span class="price">₽ 1999</span>
+            <a href="" class="button">В корзину</a>
+        </div>
+    </div>
+    <div class="product-item">
+        <img src="https://html5book.ru/wp-content/uploads/2015/10/black-dress.jpg">
+        <div class="product-list">
+            <h3>Маленькое черное платье</h3>
+            <span class="price">₽ 1999</span>
+            <a href="" class="button">В корзину</a>
+        </div>
+    </div>
+    <div class="product-item">
+        <img src="https://html5book.ru/wp-content/uploads/2015/10/black-dress.jpg">
+        <div class="product-list">
+            <h3>Маленькое черное платье</h3>
+            <span class="price">₽ 1999</span>
+            <a href="" class="button">В корзину</a>
+        </div>
+    </div>
+    <div class="product-item">
+        <img src="https://html5book.ru/wp-content/uploads/2015/10/black-dress.jpg">
+        <div class="product-list">
+            <h3>Маленькое черное платье</h3>
+            <span class="price">₽ 1999</span>
+            <a href="" class="button">В корзину</a>
+        </div>
+    </div>
+    <div class="product-item">
+        <img src="https://html5book.ru/wp-content/uploads/2015/10/black-dress.jpg">
+        <div class="product-list">
+            <h3>Маленькое черное платье</h3>
+            <span class="price">₽ 1999</span>
+            <a href="" class="button">В корзину</a>
+        </div>
+    </div>
 </div>
+
 
 <section class="pagination">
     <p class="pagination-num">1</p>

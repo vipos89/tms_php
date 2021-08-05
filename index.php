@@ -11,9 +11,6 @@ $admin = [
     'login' => 'admin',
     'password' => '123456'
 ];
-echo $_SERVER['REQUEST_METHOD'];
-
-
 
 
 switch ($url) {
