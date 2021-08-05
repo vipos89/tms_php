@@ -25,54 +25,91 @@ $products = mysqli_fetch_all($res, MYSQLI_ASSOC);
 <?php include_once __DIR__ . "/../partials/main_menu.php" ?>
 <?php include_once __DIR__ . "/../partials/header.php" ?>
 <div class="container">
+    <h2>Каталог товаров</h2>
+</div>
+<div class="container">
+
     <div class="product-item">
-        <img src="https://html5book.ru/wp-content/uploads/2015/10/black-dress.jpg">
+        <img src="https://wwweb.uz/wp-content/uploads/2019/07/php-tutorial.jpg">
         <div class="product-list">
-            <h3>Маленькое черное платье</h3>
-            <span class="price">₽ 1999</span>
-            <a href="" class="button">В корзину</a>
+            <h3><a href="">Название товара</a></h3>
+            <span class="price">1999</span>
+            <span class="button">В корзину</span>
         </div>
     </div>
     <div class="product-item">
-        <img src="https://html5book.ru/wp-content/uploads/2015/10/black-dress.jpg">
+        <img src="https://wwweb.uz/wp-content/uploads/2019/07/php-tutorial.jpg">
         <div class="product-list">
-            <h3>Маленькое черное платье</h3>
-            <span class="price">₽ 1999</span>
-            <a href="" class="button">В корзину</a>
+            <h3><a href="">Название товара</a></h3>
+            <span class="price">1999</span>
+            <span class="button">В корзину</span>
         </div>
     </div>
     <div class="product-item">
-        <img src="https://html5book.ru/wp-content/uploads/2015/10/black-dress.jpg">
+        <img src="https://wwweb.uz/wp-content/uploads/2019/07/php-tutorial.jpg">
         <div class="product-list">
-            <h3>Маленькое черное платье</h3>
-            <span class="price">₽ 1999</span>
-            <a href="" class="button">В корзину</a>
+            <h3><a href="">Название товара</a></h3>
+            <span class="price">1999</span>
+            <span class="button">В корзину</span>
         </div>
     </div>
     <div class="product-item">
-        <img src="https://html5book.ru/wp-content/uploads/2015/10/black-dress.jpg">
+        <img src="https://wwweb.uz/wp-content/uploads/2019/07/php-tutorial.jpg">
         <div class="product-list">
-            <h3>Маленькое черное платье</h3>
-            <span class="price">₽ 1999</span>
-            <a href="" class="button">В корзину</a>
+            <h3><a href="">Название товара</a></h3>
+            <span class="price">1999</span>
+            <span class="button">В корзину</span>
         </div>
     </div>
     <div class="product-item">
-        <img src="https://html5book.ru/wp-content/uploads/2015/10/black-dress.jpg">
+        <img src="https://wwweb.uz/wp-content/uploads/2019/07/php-tutorial.jpg">
         <div class="product-list">
-            <h3>Маленькое черное платье</h3>
-            <span class="price">₽ 1999</span>
-            <a href="" class="button">В корзину</a>
+            <h3><a href="">Название товара</a></h3>
+            <span class="price">1999</span>
+            <span class="button">В корзину</span>
         </div>
     </div>
     <div class="product-item">
-        <img src="https://html5book.ru/wp-content/uploads/2015/10/black-dress.jpg">
+        <img src="https://wwweb.uz/wp-content/uploads/2019/07/php-tutorial.jpg">
         <div class="product-list">
-            <h3>Маленькое черное платье</h3>
-            <span class="price">₽ 1999</span>
-            <a href="" class="button">В корзину</a>
+            <h3><a href="">Название товара</a></h3>
+            <span class="price">1999</span>
+            <span class="button">В корзину</span>
         </div>
     </div>
+    <div class="product-item">
+        <img src="https://wwweb.uz/wp-content/uploads/2019/07/php-tutorial.jpg">
+        <div class="product-list">
+            <h3><a href="">Название товара</a></h3>
+            <span class="price">1999</span>
+            <span class="button">В корзину</span>
+        </div>
+    </div>
+    <div class="product-item">
+        <img src="https://wwweb.uz/wp-content/uploads/2019/07/php-tutorial.jpg">
+        <div class="product-list">
+            <h3><a href="">Название товара</a></h3>
+            <span class="price">1999</span>
+            <span class="button">В корзину</span>
+        </div>
+    </div>
+    <div class="product-item">
+        <img src="https://wwweb.uz/wp-content/uploads/2019/07/php-tutorial.jpg">
+        <div class="product-list">
+            <h3><a href="">Название товара</a></h3>
+            <span class="price">1999</span>
+            <span class="button">В корзину</span>
+        </div>
+    </div>
+    <div class="product-item">
+        <img src="https://wwweb.uz/wp-content/uploads/2019/07/php-tutorial.jpg">
+        <div class="product-list">
+            <h3><a href="">Название товара</a></h3>
+            <span class="price">1999</span>
+            <span class="button">В корзину</span>
+        </div>
+    </div>
+
 </div>
 
 
