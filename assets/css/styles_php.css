@@ -172,6 +172,9 @@ a {
 }
 .product-item:hover {
     border-bottom: 2px solid #fc5a5a;
+    width: 330px;
+    transition: .3s ease-in;
+
 }
 .product-item img {
     display: block;
