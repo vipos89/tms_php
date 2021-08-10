@@ -72,7 +72,7 @@ $products = mysqli_fetch_all($res, MYSQLI_ASSOC);
                                     <td><?=$product['name']?></td>
                                     <td><?=$product['price']?></td>
                                     <td>
-                                        <a href="?type=edit_page&id=<?=$product['id']?>">Редактировать</a>
+                                        <a href="?type=edit_product&id=<?=$product['id']?>">Редактировать</a>
                                     </td>
                                 </tr>
                                 <?php endfor; ?>
