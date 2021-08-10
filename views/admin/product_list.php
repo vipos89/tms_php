@@ -2,8 +2,20 @@
 /**
  * @var $connection array
  */
+//debug();
+$productsPerPage = 10;
+$curPage = $_GET['page'] ?? 1;
+if($curPage< 1){
+    $curPage =1;
+}
+$sql = "SELECT count(id) as count from products";
+$res = mysqli_query($connection, $sql);
+$countProducts = (mysqli_fetch_assoc($res))['count'];
+$pageCount = ceil($countProducts/$productsPerPage);
 
-$sql = "SELECT * FROM products";
+$offset = $productsPerPage *($curPage -1);
+
+$sql = "SELECT * FROM products LIMIT {$offset} , 10";
 $res = mysqli_query($connection, $sql);
 $products = mysqli_fetch_all($res, MYSQLI_ASSOC);
 
@@ -45,6 +57,7 @@ $products = mysqli_fetch_all($res, MYSQLI_ASSOC);
                                 </thead>
                                 <tfoot>
                                 <tr>
+                                    <th rowspan="1" colspan="1">id</th>
                                     <th rowspan="1" colspan="1">Name</th>
                                     <th rowspan="1" colspan="1">Price</th>
                                     <th rowspan="1" colspan="1">actions</th>
@@ -55,9 +68,12 @@ $products = mysqli_fetch_all($res, MYSQLI_ASSOC);
                                     $product = $products[$i];
                                 ?>
                                 <tr class="<?=($i%2==0)?'odd':'even'?>">
+                                    <td><?=$product['id']?></td>
                                     <td><?=$product['name']?></td>
                                     <td><?=$product['price']?></td>
-                                    <td></td>
+                                    <td>
+                                        <a href="?type=edit_page&id=<?=$product['id']?>">Редактировать</a>
+                                    </td>
                                 </tr>
                                 <?php endfor; ?>
                                 </tbody>
@@ -67,33 +83,23 @@ $products = mysqli_fetch_all($res, MYSQLI_ASSOC);
                     <div class="row">
                         <div class="col-sm-12 col-md-5">
                             <div class="dataTables_info" id="dataTable_info" role="status" aria-live="polite">Showing 1
-                                to 10 of 57 entries
+                                to 10 of <?=$countProducts?> entries
                             </div>
                         </div>
+                        <?php if($countProducts > $productsPerPage): ?>
                         <div class="col-sm-12 col-md-7">
                             <div class="dataTables_paginate paging_simple_numbers" id="dataTable_paginate">
                                 <ul class="pagination">
                                     <li class="paginate_button page-item previous disabled" id="dataTable_previous"><a
                                                 href="#" aria-controls="dataTable" data-dt-idx="0" tabindex="0"
                                                 class="page-link">Previous</a></li>
-                                    <li class="paginate_button page-item active"><a href="#" aria-controls="dataTable"
-                                                                                    data-dt-idx="1" tabindex="0"
-                                                                                    class="page-link">1</a></li>
-                                    <li class="paginate_button page-item "><a href="#" aria-controls="dataTable"
-                                                                              data-dt-idx="2" tabindex="0"
-                                                                              class="page-link">2</a></li>
-                                    <li class="paginate_button page-item "><a href="#" aria-controls="dataTable"
-                                                                              data-dt-idx="3" tabindex="0"
-                                                                              class="page-link">3</a></li>
-                                    <li class="paginate_button page-item "><a href="#" aria-controls="dataTable"
-                                                                              data-dt-idx="4" tabindex="0"
-                                                                              class="page-link">4</a></li>
-                                    <li class="paginate_button page-item "><a href="#" aria-controls="dataTable"
-                                                                              data-dt-idx="5" tabindex="0"
-                                                                              class="page-link">5</a></li>
-                                    <li class="paginate_button page-item "><a href="#" aria-controls="dataTable"
-                                                                              data-dt-idx="6" tabindex="0"
-                                                                              class="page-link">6</a></li>
+                                    <?php for ($i=1; $i<=$pageCount; $i++):?>
+                                    <li class="paginate_button page-item active"><a href="<?=$_SERVER['REQUEST_URI']?>&page=<?=$i?>" aria-controls="dataTable"
+                                                                                    data-dt-idx="<?=$i?>" tabindex="0"
+                                                                                    class="page-link"><?=$i?></a></li>
+                                    <?php endfor; ?>
+
+
                                     <li class="paginate_button page-item next" id="dataTable_next"><a href="#"
                                                                                                       aria-controls="dataTable"
                                                                                                       data-dt-idx="7"
@@ -103,6 +109,7 @@ $products = mysqli_fetch_all($res, MYSQLI_ASSOC);
                                 </ul>
                             </div>
                         </div>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>
