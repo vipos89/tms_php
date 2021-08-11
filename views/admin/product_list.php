@@ -94,7 +94,7 @@ $products = mysqli_fetch_all($res, MYSQLI_ASSOC);
                                                 href="#" aria-controls="dataTable" data-dt-idx="0" tabindex="0"
                                                 class="page-link">Previous</a></li>
                                     <?php for ($i=1; $i<=$pageCount; $i++):?>
-                                    <li class="paginate_button page-item active"><a href="<?=$_SERVER['REQUEST_URI']?>&page=<?=$i?>" aria-controls="dataTable"
+                                    <li class="paginate_button page-item active"><a href="<?=addGetParameterToUrl($_SERVER['REQUEST_URI'], 'page', $i)?>" aria-controls="dataTable"
                                                                                     data-dt-idx="<?=$i?>" tabindex="0"
                                                                                     class="page-link"><?=$i?></a></li>
                                     <?php endfor; ?>
