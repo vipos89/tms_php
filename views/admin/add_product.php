@@ -1,9 +1,7 @@
 <?php
 
-if (!empty($_POST)) {
+if ( $_SERVER['REQUEST_METHOD'] == 'POST') {
     $data = $_POST;
-    $data['price'] = (int) $data['price'];
-
     $allowedTypes = ['image/jpeg', 'image/png'];
     if (in_array($_FILES['image2']['type'] ?? null, $allowedTypes)) {
         $image = rand(1, 1000).$_FILES['image2']['name'];
@@ -11,9 +9,16 @@ if (!empty($_POST)) {
         move_uploaded_file($_FILES['image2']['tmp_name'], $to);
         $data['image'] = '/assets/img/' . $image;
     }
-    $sql = "INSERT INTO products (name, price, image) 
-VALUES ('{$data['name']}', '{$data['price']}', '{$data['image']}')";
+    $data['image'] = $data['image']?? null;
+
+    $keys= array_keys($data);
+    $keys = implode(',', $keys);
+    $values = implode("' , '", $data);
+    $values = "'".$values."'";
+
+    $sql = "INSERT INTO products ($keys) VALUES ({$values})";
     $res = mysqli_query($connection, $sql);
+   // header('Location: /admin?type=product_list');
 
 }
 

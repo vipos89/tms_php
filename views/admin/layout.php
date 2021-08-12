@@ -245,7 +245,16 @@
 
             </nav>
             <!-- End of Topbar -->
-            <?php include_once $type.".php" ?>
+            <?php
+
+            if (isset($_GET['type'])) {
+                $type = $_GET['type'];
+            } else {
+                $type = 'dashboard';
+            }
+
+            include_once $type.".php";
+            ?>
 
 
         </div>
