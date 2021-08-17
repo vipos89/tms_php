@@ -41,7 +41,12 @@ $image = $product['image']?? 'https://chinaprices.ru/blog/wp-content/uploads/201
             &#8226;20+ hour battery life for nonstop wireless usage
         </p>
         <p class="list-product-info-price">Price: <?=$product['price']?> BYN</p>
-        <button class="list-product-button">Order</button>
+        <form action="/add_to_cart" method="post">
+            <input type="hidden" name="id" value="<?=$product['id']?>">
+            <input type="number" min="1" step="1" name="count">
+            <button class="list-product-button" type="submit">Order</button>
+        </form>
+
     </div>
 </section>
 

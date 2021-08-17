@@ -42,6 +42,15 @@ switch ($url) {
     case '/blog':
         require_once __DIR__ . '/views/front/blog.php';
         break;
+    case '/cart':
+        require_once __DIR__ . '/views/front/cart.php';
+        break;
+    case '/add_to_cart':
+        require_once __DIR__ . '/core/add_to_cart.php';
+        break;
+    case '/page':
+        require_once __DIR__ . '/views/front/page.php';
+        break;
     case '/product':
         require_once __DIR__ . '/views/front/product.php';
         break;

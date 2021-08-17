@@ -5,7 +5,7 @@
 $sql = "SELECT * FROM products";
 $res = mysqli_query($connection, $sql);
 $products = mysqli_fetch_all($res, MYSQLI_ASSOC);
-
+debug($_SESSION);
 
 ?>
 

@@ -22,7 +22,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
             </div>
             <div class="form-group">
                 <label for="exampleInputPassword1">Статья</label>
-                <textarea class="form-control" name="content" required></textarea>
+                <textarea class="form-control" name="content" id="editor"></textarea>
             </div>
             <div class="form-group form-check">
                 <input type="checkbox" name="active" id="active" checked="checked">
@@ -33,4 +33,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     </div>
 
 </div>
+<script>
+    ClassicEditor
+        .create( document.querySelector( '#editor' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+</script>
 <!-- /.container-fluid -->

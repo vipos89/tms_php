@@ -23,6 +23,6 @@ $menu = [
         </navigation-link>
     </div>
     <navigation-button>
-        <button class="nav-button">&#128722;&nbsp;Cart</button>
+        <a class="nav-button" href="/cart">&#128722;&nbsp;Cart</a>
     </navigation-button>
 </navigation>

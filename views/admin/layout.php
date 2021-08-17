@@ -19,6 +19,7 @@
 
     <!-- Custom styles for this template-->
     <link href="/assets/admin/css/sb-admin-2.min.css" rel="stylesheet">
+    <script src="https://cdn.ckeditor.com/ckeditor5/29.1.0/classic/ckeditor.js"></script>
 
 </head>
 
@@ -31,6 +32,9 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
         <li class="nav-item">
             <a href="/admin?type=product_list" style="color: white">Товары</a>
+        </li>
+        <li class="nav-item">
+            <a href="/admin?type=page_list" style="color: white">Блог</a>
         </li>
 
     </ul>
