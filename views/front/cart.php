@@ -33,9 +33,9 @@ $total = 0;
 <ul>
     <?php foreach ($products as $product): ?>
     <?php
-        $total +=  $cart[$product['id']] *$product['price'];
-        $sum = $cart[$product['id']] *$product['price'];
-        ?>
+        $total +=  $cart[$product['id']] * $product['price'];
+        $sum = $cart[$product['id']] * $product['price'];
+    ?>
     <li>
         <span>Товар:<?=$product['name']?></span>
         <span>Количество:<?=$cart[$product['id']]?></span>
