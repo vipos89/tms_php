@@ -19,28 +19,19 @@ switch ($url) {
         require_once __DIR__ . '/views/front/main.php';
         break;
     case '/logout':
-        unset($_SESSION['name']);
+        unset($_SESSION['user']);
         header("Location: /");
         break;
 
     case '/login':
-        if ($_SERVER['REQUEST_METHOD'] == "POST") {
-            if ($_POST['login'] === $admin['login'] && $_POST['password'] === $admin['password']) {
-                $_SESSION['name'] = $admin['login'];
-                header("Location: /");
-            } else {
-                echo "INVALID LOGIN OR PASSWORD";
-            }
-
-
-        } else {
-            require_once __DIR__ . '/views/front/login.php';
-
-        }
+        require_once __DIR__ . '/views/front/login.php';
         break;
 
     case '/blog':
         require_once __DIR__ . '/views/front/blog.php';
+        break;
+    case '/register':
+        require_once __DIR__ . '/views/front/register.php';
         break;
     case '/cart':
         require_once __DIR__ . '/views/front/cart.php';

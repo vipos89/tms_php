@@ -4,23 +4,34 @@
  */
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $login = $_POST['login'];
-    $sql = "SELECT * FROM users 
-        WHERE username = '$login'
-         
-        LIMIT 1";
+    $email = $_POST['email'];
+    $sql = "SELECT * FROM users WHERE username = '$login' OR email = '$email' LIMIT 1";
     $res = mysqli_query($connection, $sql);
-    $user = mysqli_fetch_assoc($res);
-   // debug($user);
-    if(!empty($user) && $user['password'] == md5($_POST['password'])){
-        $_SESSION['user'] = [
-                'login' => $user['username'],
-                'isAdmin' => $user['is_admin']
-        ];
-        echo '<meta http-equiv="refresh" content="0;url=/" />';
+    $userExists = (bool) mysqli_num_rows($res);
+    $errors = [];
+    if($userExists){
+        $errors[] = 'Пользователь с таким логином или емайлом уже существует';
+    }
+    if($_POST['password'] != $_POST['password2']){
+        $errors[] = 'Пароли не совпадают';
+    }
+    if (mb_strlen($_POST['password']) <5){
+        $errors[] = 'Пароль не может быть короче 5 символов';
     }
 
 
+    if(empty($errors)){
+        $password = md5($_POST['password']);
 
+        $sql = "INSERT INTO users (username, email, password) 
+                VALUES('$login', '$email', '$password')";
+        mysqli_query($connection, $sql);
+        header("Location : /");
+
+    }else {
+        debug($errors);
+        die();
+    }
 
 
 }
@@ -35,7 +46,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.6 -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
+          integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
 
@@ -181,19 +193,27 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 <i class="fa fa-key" aria-hidden="true"></i>
             </div>
             <div class="col-lg-12 login-title">
-               LOGIN
+                Register
             </div>
 
             <div class="col-lg-12 login-form">
                 <div class="col-lg-12 login-form">
-                    <form method="post" action="/login">
+                    <form method="post" action="/register">
                         <div class="form-group">
                             <label class="form-control-label">USERNAME</label>
                             <input type="text" class="form-control" name="login">
                         </div>
                         <div class="form-group">
-                            <label class="form-control-label">PASSWORD</label>
+                            <label class="form-control-label">Email</label>
+                            <input type="email" class="form-control" name="email">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-control-label">Пароль</label>
                             <input type="password" class="form-control" name="password">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-control-label">Повторить пароль</label>
+                            <input type="password" class="form-control" name="password2">
                         </div>
 
                         <div class="col-lg-12 loginbttm">
@@ -201,7 +221,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                                 <!-- Error Message -->
                             </div>
                             <div class="col-lg-6 login-btm login-button">
-                                <button type="submit" class="btn btn-outline-primary">LOGIN</button>
+                                <button type="submit" class="btn btn-outline-primary">Register</button>
                             </div>
                         </div>
                     </form>
