@@ -27,9 +27,6 @@ foreach ($routes as $route => $item){
     }
 }
 
-\App\Core\DB::getConnection();
-\App\Models\Page::finById(1);
-
 
 if(empty($matches)){
     echo "404";
