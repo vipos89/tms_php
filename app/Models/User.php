@@ -10,4 +10,8 @@ class User extends Model
 {
     protected static $tablename = 'users';
 
+    public function sayHello(){
+
+    }
+
 }

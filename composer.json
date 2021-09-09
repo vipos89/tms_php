@@ -6,7 +6,7 @@
         }
     },
     "require": {
-
+      "ext-mbstring": "*"
     },
     "require-dev": {
 

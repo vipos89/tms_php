@@ -9,10 +9,9 @@ use App\Models\Page;
 class HomeController
 {
     public function index(){
-
+        $pages = Page::search();
         render('home/index', [
-            'name' => 'Ololo',
-            'lastName' => 'Ololoska'
+            'templatePages' => $pages
         ]);
     }
 
